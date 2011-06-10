@@ -1,0 +1,7 @@
+TODO:
+put x in columns when completed
+	Implement socket connection to beagle board
+	create a big "STOP" button and a "start" button on right 
+	Implement faster reacting motion using "CMAttitude" and "CoreMotion" -- might need to remove prexisting calibration
+	connect motion libs to socket connection; ensure UI does not hang by employing proper threading technique
+	Implement UIView to track finger motion and make equivalent throttle indicator under the view 
