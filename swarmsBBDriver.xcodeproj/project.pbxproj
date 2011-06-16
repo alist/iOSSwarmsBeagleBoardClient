@@ -41,6 +41,8 @@
 		2B44A0B311C995D500B24959 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44A0B211C995D500B24959 /* QuartzCore.framework */; };
 		2B44A0B511C995D500B24959 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44A0B411C995D500B24959 /* UIKit.framework */; };
 		68566B6813A29B6100829938 /* swarmsSocketFacilitator.m in Sources */ = {isa = PBXBuildFile; fileRef = 68566B6713A29B6100829938 /* swarmsSocketFacilitator.m */; };
+		68F68A3813A80B850075D893 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F68A3713A80B850075D893 /* CFNetwork.framework */; };
+		68F68A3A13A80B850075D893 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F68A3913A80B850075D893 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		32CA4F630368D1EE00C91783 /* swarmsBBDriver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swarmsBBDriver_Prefix.pch; sourceTree = "<group>"; };
 		68566B6613A29B6100829938 /* swarmsSocketFacilitator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swarmsSocketFacilitator.h; sourceTree = "<group>"; };
 		68566B6713A29B6100829938 /* swarmsSocketFacilitator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swarmsSocketFacilitator.m; sourceTree = "<group>"; };
+		68F68A3713A80B850075D893 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		68F68A3913A80B850075D893 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,8 @@
 				2B44A0B111C995D500B24959 /* Foundation.framework in Frameworks */,
 				2B44A0B311C995D500B24959 /* QuartzCore.framework in Frameworks */,
 				2B44A0B511C995D500B24959 /* UIKit.framework in Frameworks */,
+				68F68A3813A80B850075D893 /* CFNetwork.framework in Frameworks */,
+				68F68A3A13A80B850075D893 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +231,8 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				68F68A3713A80B850075D893 /* CFNetwork.framework */,
+				68F68A3913A80B850075D893 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

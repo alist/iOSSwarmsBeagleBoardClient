@@ -48,10 +48,11 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 
 #import <UIKit/UIKit.h>
+#import "swarmsSocketFacilitator.h"
 
 @class SoundEffect, LevelViewController;
 
-@interface LevelView : UIView {
+@interface LevelView : UIView <swarmsSocketFacilitatorDelegate> {
     LevelViewController *viewController;
     UIImageView *bubbleView;
     UIImageView *upDownArrowsView;
@@ -59,6 +60,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     UIButton *holdButton;
 	UILabel *degreeDisplay;
 	UILabel *shadowDegreeDisplay;
+	
+	swarmsSocketFacilitator * _driveFaciliatator;
 	
     SoundEffect *farSound;
     SoundEffect *nearSound;

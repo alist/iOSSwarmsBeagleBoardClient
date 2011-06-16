@@ -267,18 +267,29 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)updateToInclinationInRadians:(float)rads {
     float rotation = -RadiansToDegrees(rads);
-    static int soundUpdateCounter = 0;
+    static int driveDirectionUpdateCounter = 0;
     
-    if (holdButtonIsShowing) {  // Don't update if user has toggled the Hold button to the Release state
-        [self updateReadoutForAngle:rotation];
-        [self updateBubbleForAngle:rotation];
-        [self updateArrowsForAngle:rotation];
-        soundUpdateCounter++;
+	[self updateReadoutForAngle:rotation];
+	[self updateBubbleForAngle:rotation];
+	[self updateArrowsForAngle:rotation];
     
-        if (soundUpdateCounter == 10) { // update sound at a tenth the rate of the animation
-            [self updateLevelSoundForAngle:rotation];
-            soundUpdateCounter = 0;
-        }
+	if (!holdButtonIsShowing){
+		driveDirectionUpdateCounter++;
+		if (driveDirectionUpdateCounter == 30) { // update sound at a tenth the rate of the animation
+			driveDirectionUpdateCounter = 0;
+
+			[self updateLevelSoundForAngle:rotation];
+			
+			int steerInt = (int)rotation;
+			
+			NSString *commandString = [NSString stringWithFormat:@"steer %i;",steerInt];
+			if ([_driveFaciliatator sendCommandString:commandString]){
+				NSLog(@"Sent command: %@",commandString);
+			}else {
+				NSLog(@"Failed command: %@",commandString);
+			}
+
+		}
     }
 }
 
@@ -287,10 +298,19 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
     if (holdButtonIsShowing == YES) {
         holdButtonIsShowing = NO;
         [holdButton setImage:[UIImage imageNamed:@"release_button.png"] forState:UIControlStateNormal];
+		
+		if (_driveFaciliatator == nil)
+			_driveFaciliatator = [[swarmsSocketFacilitator alloc] initWithDelegate:self];
+		
+		[_driveFaciliatator startConnection];
+		
+		[_driveFaciliatator sendCommandString:@"start;"];
     } else {
         holdButtonIsShowing = YES;
         // set image on Hold button
         [holdButton setImage:[UIImage imageNamed:@"hold_button.png"] forState:UIControlStateNormal];
+		
+		[_driveFaciliatator stopConnection];
     }    
 }
 

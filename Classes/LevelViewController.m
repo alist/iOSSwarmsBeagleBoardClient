@@ -52,7 +52,7 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 #import "LevelView.h"
 
 #define kTransitionDuration	0.75
-#define kUpdateFrequency 20  // Hz
+#define kUpdateFrequency 100  // Hz
 #define kFilteringFactor 0.05
 #define kNoReadingValue 999
 
