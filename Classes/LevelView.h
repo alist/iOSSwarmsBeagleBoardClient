@@ -48,7 +48,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 
 #import <UIKit/UIKit.h>
-#import "swarmsSocketFacilitator.h"
+#import "swarmsUpdateManager.h"
 
 @class SoundEffect, LevelViewController;
 
@@ -61,7 +61,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	UILabel *degreeDisplay;
 	UILabel *shadowDegreeDisplay;
 	
-	swarmsSocketFacilitator * _driveFaciliatator;
+	swarmsUpdateManager * _driveUpdater;
 	
     SoundEffect *farSound;
     SoundEffect *nearSound;

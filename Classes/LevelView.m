@@ -200,6 +200,8 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 }
 
 - (void)dealloc {
+	[_driveUpdater release];
+	
     [bubbleView release];
     [upDownArrowsView release];
     [downUpArrowsView release];
@@ -267,50 +269,54 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (void)updateToInclinationInRadians:(float)rads {
     float rotation = -RadiansToDegrees(rads);
-    static int driveDirectionUpdateCounter = 0;
+//    static int driveDirectionUpdateCounter = 0;
     
 	[self updateReadoutForAngle:rotation];
 	[self updateBubbleForAngle:rotation];
 	[self updateArrowsForAngle:rotation];
+	
+	
+	int steerInt = (int)rotation;
+	[_driveUpdater setDriveDirection:steerInt];
+
     
-	if (!holdButtonIsShowing){
-		driveDirectionUpdateCounter++;
-		if (driveDirectionUpdateCounter == 30) { // update sound at a tenth the rate of the animation
-			driveDirectionUpdateCounter = 0;
-
-			[self updateLevelSoundForAngle:rotation];
-			
-			int steerInt = (int)rotation;
-			
-			NSString *commandString = [NSString stringWithFormat:@"steer %i;",steerInt];
-			if ([_driveFaciliatator sendCommandString:commandString]){
-				NSLog(@"Sent command: %@",commandString);
-			}else {
-				NSLog(@"Failed command: %@",commandString);
-			}
-
-		}
-    }
+//	if (!holdButtonIsShowing){
+//		driveDirectionUpdateCounter++;
+//		if (driveDirectionUpdateCounter == 30) { // update sound at a tenth the rate of the animation
+//			driveDirectionUpdateCounter = 0;
+//
+//			[self updateLevelSoundForAngle:rotation];
+//			
+//			int steerInt = (int)rotation;
+//			
+//			[_driveUpdater setDriveDirection:steerInt];
+//
+//		}
+//    }
 }
 
 // Display only updates if Hold/Release button hasn't been pressed 
 - (void)toggleHoldButton:(id)sender {
     if (holdButtonIsShowing == YES) {
         holdButtonIsShowing = NO;
+
+		if (_driveUpdater == nil){
+			_driveUpdater = [[swarmsUpdateManager alloc] init];
+				
+			[_driveUpdater connect];
+
+		}
+		
+		[_driveUpdater beginAutoUpdates];
+		
         [holdButton setImage:[UIImage imageNamed:@"release_button.png"] forState:UIControlStateNormal];
 		
-		if (_driveFaciliatator == nil)
-			_driveFaciliatator = [[swarmsSocketFacilitator alloc] initWithDelegate:self];
-		
-		[_driveFaciliatator startConnection];
-		
-		[_driveFaciliatator sendCommandString:@"start;"];
     } else {
         holdButtonIsShowing = YES;
         // set image on Hold button
         [holdButton setImage:[UIImage imageNamed:@"hold_button.png"] forState:UIControlStateNormal];
 		
-		[_driveFaciliatator stopConnection];
+		[_driveUpdater endAutoUpdates];
     }    
 }
 

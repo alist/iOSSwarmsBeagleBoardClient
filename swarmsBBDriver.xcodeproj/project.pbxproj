@@ -41,6 +41,7 @@
 		2B44A0B311C995D500B24959 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44A0B211C995D500B24959 /* QuartzCore.framework */; };
 		2B44A0B511C995D500B24959 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B44A0B411C995D500B24959 /* UIKit.framework */; };
 		68566B6813A29B6100829938 /* swarmsSocketFacilitator.m in Sources */ = {isa = PBXBuildFile; fileRef = 68566B6713A29B6100829938 /* swarmsSocketFacilitator.m */; };
+		68F462CC13B0169000FF8DE9 /* swarmsUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F462CB13B0169000FF8DE9 /* swarmsUpdateManager.m */; };
 		68F68A3813A80B850075D893 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F68A3713A80B850075D893 /* CFNetwork.framework */; };
 		68F68A3A13A80B850075D893 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F68A3913A80B850075D893 /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,8 @@
 		32CA4F630368D1EE00C91783 /* swarmsBBDriver_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swarmsBBDriver_Prefix.pch; sourceTree = "<group>"; };
 		68566B6613A29B6100829938 /* swarmsSocketFacilitator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swarmsSocketFacilitator.h; sourceTree = "<group>"; };
 		68566B6713A29B6100829938 /* swarmsSocketFacilitator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swarmsSocketFacilitator.m; sourceTree = "<group>"; };
+		68F462CA13B0169000FF8DE9 /* swarmsUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swarmsUpdateManager.h; sourceTree = "<group>"; };
+		68F462CB13B0169000FF8DE9 /* swarmsUpdateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = swarmsUpdateManager.m; sourceTree = "<group>"; };
 		68F68A3713A80B850075D893 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		68F68A3913A80B850075D893 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				14658DF50DB7BCB90090FC07 /* SoundEffect.m */,
 				68566B6613A29B6100829938 /* swarmsSocketFacilitator.h */,
 				68566B6713A29B6100829938 /* swarmsSocketFacilitator.m */,
+				68F462CA13B0169000FF8DE9 /* swarmsUpdateManager.h */,
+				68F462CB13B0169000FF8DE9 /* swarmsUpdateManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				142056470D611772009CA2B3 /* CalibrationView.m in Sources */,
 				14658DF70DB7BCB90090FC07 /* SoundEffect.m in Sources */,
 				68566B6813A29B6100829938 /* swarmsSocketFacilitator.m in Sources */,
+				68F462CC13B0169000FF8DE9 /* swarmsUpdateManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
