@@ -1,1 +1,9 @@
-MIT License
+This compiles and runs on iOS 4.2 for iPhone
+
+This code is inherited from an apple sample project for levels-- It's weird in its view coordinate scheme
+This code includes a few files that could be ported to new projects
+
+This code imitates pyClient.py of the gitHub project: https://github.com/alist/swarmsBeagleBoardPythonClientServer
+
+ LICENSE:
+This code is hereby licensed under the MIT License @ http://www.opensource.org/licenses/mit-license.php
