@@ -68,6 +68,8 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 }
 
 - (void)dealloc {
+	
+	[onlyUsePanSwitch release];
     [calibration1Button release];
     [calibration2Button release];
 	[viewController release];
@@ -127,6 +129,12 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 	UIImage *imageHighlighted = nil; 
 	UIImage *imageDisabled = nil;
     
+	
+//	onlyUsePanSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+//	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//	[onlyUsePanSwitch setOn:[defaults boolForKey:@"onlyUsePan"]];
+//	[self addSubview:onlyUsePanSwitch];
+	
 	CGRect buttonFrame = CGRectMake(doneShiftRight, doneShiftDown, imageNormal.size.width, imageNormal.size.height);
 	UIButton *doneButton = [self buttonWithFrame:buttonFrame normalImage:imageNormal highlightedImage:imageHighlighted disabledImage:imageDisabled target:self.viewController selector:@selector(flipAction:)];
     [self addSubview:doneButton];

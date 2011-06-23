@@ -78,4 +78,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 - (void)updateToInclinationInRadians:(float)rotation;
 - (void)toggleHoldButton:(id)sender;
 
+//sorry, but right now I don't care that much for classiness
+- (swarmsUpdateManager *) driveUpdater;
+
 @end

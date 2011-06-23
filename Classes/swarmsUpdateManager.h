@@ -19,22 +19,26 @@
 	swarmsSocketFacilitator *	_SWARMSFacilitator;
 			
 	NSTimer*					_updateTimer;
+	
+	NSThread *					_sendCommandThread;
 }
 
 @property (nonatomic, readonly)int lastSetSpeed;
 @property (nonatomic, readonly)int lastSetDirection;
 
 -(id)init;
--(bool)isConnected;
--(bool)connect;
+-(BOOL)isConnected;
+-(BOOL)connect;
 
--(bool)autoUpdatesEnabled;
+-(BOOL)autoUpdatesEnabled;
 -(void)beginAutoUpdates;
 -(void)endAutoUpdates;
 
--(bool)setDriveSpeed:(int)speed;
--(bool)setDriveDirection:(int)direction;
+-(BOOL)setDriveSpeed:(int)speed;
+-(BOOL)setDriveDirection:(int)direction;
 
+-(BOOL)setDriveSpeed:(int)speed withMinValue:(int)min maxValue:(int)max;
+-(BOOL)setDriveDirection:(int)direction withMinValue:(int)min maxValue:(int)max;
 
 -(NSString*)_interpolatedDriveStringForNextAndLastDriveDirections;
 -(NSString *)_interpolatedSteerStringBetweenCurrentSteerPoint:(int)currentSteerPoint andEndSteerPoint:(int)endPoint;

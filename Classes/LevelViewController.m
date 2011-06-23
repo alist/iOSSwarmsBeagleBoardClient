@@ -50,6 +50,7 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 #import "LevelViewController.h"
 #import "CalibrationView.h"
 #import "LevelView.h"
+#import "swarmsUpdateManager.h"
 
 #define kTransitionDuration	0.75
 #define kUpdateFrequency 100  // Hz
@@ -93,11 +94,33 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
 
 	levelView = [[LevelView alloc] initWithFrame:applicationFrame viewController:self];
 	[self.view addSubview:levelView];
+	
+	UIPanGestureRecognizer * speedRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureChangedWithRecognizer:)];
+	[self.view addGestureRecognizer:speedRecognizer];
+	[speedRecognizer release];
+	speedRecognizer = nil;
+	
     
     calibrationView = [[CalibrationView alloc] initWithFrame:applicationFrame viewController:self];
 }
 
 
+-(void)panGestureChangedWithRecognizer:(UIPanGestureRecognizer*)recognizer{
+	
+	if (recognizer.state == UIGestureRecognizerStateChanged){
+//		NSLog(@"Y %f val of %f; X %f of %f;",[recognizer locationInView:self.view].y,self.view.frame.size.height,[recognizer locationInView:self.view].x,self.view.frame.size.width );
+		NSLog(@"X: %f ; Y: %f ;",[recognizer translationInView:self.view].x,[recognizer translationInView:self.view].y);
+		[[levelView driveUpdater] setDriveSpeed:[recognizer translationInView:self.view].x * -1 withMinValue:-150 maxValue:150];
+		//if you want to control turning
+		//		[[levelView driveUpdater] setDriveDirection:[recognizer translationInView:self.view].y * -1 withMinValue:-100 maxValue:100];
+
+	}else if (recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateEnded){
+//there is an auto-shutoff, too
+		[[levelView driveUpdater] setDriveSpeed:0 withMinValue:-150 maxValue:150]; 
+	}
+}
+
+												
 #pragma mark -
 #pragma mark === Flip action ===
 #pragma mark -

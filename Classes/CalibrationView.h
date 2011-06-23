@@ -56,6 +56,8 @@ Copyright (C) 2010 Apple Inc. All Rights Reserved.
     UIImageView *calibrationCompleteView;
     UIButton *calibration1Button;
     UIButton *calibration2Button;
+	
+	UISwitch *onlyUsePanSwitch;
 }
 
 @property (nonatomic, assign) LevelViewController *viewController;

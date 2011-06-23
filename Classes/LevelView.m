@@ -214,6 +214,10 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
     [super dealloc];
 }
 
+- (swarmsUpdateManager *) driveUpdater{
+	return _driveUpdater;
+}
+
 #pragma mark -
 #pragma mark === Actions ===
 #pragma mark -
@@ -275,24 +279,10 @@ CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 	[self updateBubbleForAngle:rotation];
 	[self updateArrowsForAngle:rotation];
 	
-	
-	int steerInt = (int)rotation;
-	[_driveUpdater setDriveDirection:steerInt];
+	int steerInt = (int)rotation * -1;
+	[_driveUpdater setDriveDirection:steerInt withMinValue:-40 maxValue:40];
 
-    
-//	if (!holdButtonIsShowing){
-//		driveDirectionUpdateCounter++;
-//		if (driveDirectionUpdateCounter == 30) { // update sound at a tenth the rate of the animation
-//			driveDirectionUpdateCounter = 0;
-//
-//			[self updateLevelSoundForAngle:rotation];
-//			
-//			int steerInt = (int)rotation;
-//			
-//			[_driveUpdater setDriveDirection:steerInt];
-//
-//		}
-//    }
+
 }
 
 // Display only updates if Hold/Release button hasn't been pressed 
